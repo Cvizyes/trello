@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112131513) do
+ActiveRecord::Schema.define(version: 20180117211324) do
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "list_id"
+    t.text "description"
+    t.string "name"
+    t.integer "position"
+    t.index ["list_id"], name: "index_cards_on_list_id"
+  end
 
   create_table "lists", force: :cascade do |t|
     t.string "name"

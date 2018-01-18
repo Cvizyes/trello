@@ -1,13 +1,14 @@
 <template>
   <draggable v-model="lists" :options="{group: 'lists'}" class="board dragArea" @end="listMoved">
     <div v-for="list in original_lists" class="list">
-      <h2>{{ list.name }}</h2>
-      <hr>
+      <h6>{{ list.name }}</h6>
+   
       <draggable v-model="list.cards" :options="{group: 'cards'}"> 
         <div  v-for="(card, index) in list.cards" class="card card-body">
          {{card.name}}
         </div>
      </draggable>
+
       <textarea v-model="messages[list.id]" class=" form-control"></textarea>
       <button v-on:click="submitMessages(list.id)" class="btn btn-primary">Add</button>
     </div>
@@ -59,7 +60,7 @@
 }
 .board {
   overflow-x: auto;
-
+  white-space: nowrap;
 }
 .list {
   background: #E2E4E6;
